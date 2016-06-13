@@ -1,0 +1,116 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>SpringGWT</groupId>
+  <artifactId>SpringGWT</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>SpringGWT Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  
+  <properties>
+  	<spring.version>4.2.4.RELEASE</spring.version>
+  	<gwt.version>2.7.0</gwt.version>
+  	<log4j.version>1.2.17</log4j.version>
+  	<spring4gwt.version>0.0.1</spring4gwt.version>
+  	
+  </properties>
+  
+  <dependencies>
+  
+  <dependency>
+    	<groupId>javax</groupId>
+    	<artifactId>javaee-api</artifactId>
+    	<version>7.0</version>
+    </dependency>
+    
+  	<!-- SPRING -->
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-webmvc</artifactId>
+  		<version>${spring.version}</version>
+  	</dependency>
+  	
+  	<!-- GWT -->
+  	<dependency>
+        <groupId>com.google.gwt</groupId>
+        <artifactId>gwt-servlet</artifactId>
+        <version>${gwt.version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>com.google.gwt</groupId>
+        <artifactId>gwt-user</artifactId>
+        <version>${gwt.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+       	<version>${log4j.version}</version>
+    </dependency>
+    
+    <!--
+    	 	Library spring4gwt doesn't exist in the maven repository. 
+    		To download the library use link : https://code.google.com/archive/p/spring4gwt/downloads
+    		Place this library  to WEB-INF/lib or install it to your local repository:
+    	 	mvn install:install-file -Dfile=spring4gwt-0.0.1.jar -DgroupId=com.google.code -DartifactId=spring4gwt -Dversion=0.0.1 -Dpackaging=jar 
+     -->
+    <dependency>
+        <groupId>com.google.code</groupId>
+        <artifactId>spring4gwt</artifactId>
+        <version>${spring4gwt.version}</version>
+    </dependency>
+    
+  	
+  	<!-- TEST -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    
+  </dependencies>
+  
+  <build>
+    <finalName>SpringGWT</finalName>
+    <plugins>
+    	<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <version>${gwt.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <plugin>
+            	<groupId>org.apache.tomcat.maven</groupId>
+            	<artifactId>tomcat7-maven-plugin</artifactId>
+            	<version>2.2</version>
+            	<configuration>
+            		<server>apache-tomcat-8</server>
+            		<url>http://localhost:8080/manager/text</url>
+            		<user>tomcat</user>
+            	</configuration>            	
+            </plugin>
+			
+    </plugins>
+  </build>
+  
+</project>
