@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<title>$title</title>
+	</head>
+	<body>
+		#macro(paragraph $object)
+			#set ($msg = $object)
+			<p>$msg</p> 
+		#end
+		<div>
+			#paragraph("There is a list of seasons (fields of the object is calling directly):")
+			<p>1:$seasons.winter</p>
+			<p>1:$seasons.spring</p>
+			<p>1:$seasons.summer</p>
+			<p>1:$seasons.autumn</p>
+		</div>
+		
+		<div>
+			#paragraph("There is a list of seasons (iterating a collection):")
+			#foreach($season in $seasonList)
+				<p>${velocityCount}:$season</p>
+			#end
+		</div>
+		
+		<div>
+			#paragraph("There is a 'if' statement.")
+			<div></div>
+			<select>
+				#foreach($season in $seasonList)
+					<option 
+						#if($season == "summer")
+							selected 
+						#end
+					value="${season}">$season</option>
+				#end
+			</select>
+			
+		</div>
+		
+	</body>
+</html>
