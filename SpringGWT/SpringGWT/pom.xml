@@ -13,6 +13,7 @@
   	<gwt.version>2.7.0</gwt.version>
   	<log4j.version>1.2.17</log4j.version>
   	<spring4gwt.version>0.0.1</spring4gwt.version>
+  	<gxt.version>3.1.1</gxt.version>
   	
   </properties>
   
@@ -43,6 +44,20 @@
         <artifactId>gwt-user</artifactId>
         <version>${gwt.version}</version>
     </dependency>
+    
+    <dependency>
+    <groupId>com.google.gwt</groupId>
+    	<artifactId>gwt-dev</artifactId>
+    	<version>${gwt.version}</version>
+	</dependency>
+	
+    
+     <dependency>
+        <groupId>com.sencha.gxt</groupId>
+        <artifactId>gxt</artifactId>
+        <version>${gxt.version}</version>
+     </dependency>
+    
     <dependency>
         <groupId>log4j</groupId>
         <artifactId>log4j</artifactId>
@@ -92,11 +107,16 @@
                 <executions>
                     <execution>
                         <goals>
+                        	<goal>run</goal>
                             <goal>compile</goal>
                             <goal>test</goal>
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+             			<runTarget>indexGwt.html</runTarget>
+             			<hostedWebapp>${basedir}/src/main/webapp</hostedWebapp>
+             	</configuration>
             </plugin>
             
             <plugin>
