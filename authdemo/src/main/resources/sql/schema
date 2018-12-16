@@ -1,0 +1,26 @@
+CREATE TABLE user (
+  id integer not null,
+  username character varying (32) not null,
+  password character varying (64) not null,
+  email character varying (40) not null,
+  enabled boolean not null,
+  CONSTRAINT user_pk PRIMARY KEY (id),
+  CONSTRAINT user_name_uniq UNIQUE (username),
+  CONSTRAINT user_email_uniq UNIQUE (email)
+);
+
+CREATE TABLE role (
+  id integer not null,
+  name character varying (10) not null,
+  CONSTRAINT role_pk PRIMARY KEY (id),
+  CONSTRAINT role_name_uniq UNIQUE (name)
+);
+
+CREATE TABLE user_role(
+  user_id integer,
+  role_id integer,
+  CONSTRAINT user_role_user FOREIGN KEY (user_id)
+    REFERENCES user (id),
+  CONSTRAINT user_role_role FOREIGN KEY (role_id)
+    REFERENCES role (id)
+);

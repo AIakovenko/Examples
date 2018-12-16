@@ -1,0 +1,8 @@
+INSERT INTO user (id, username, password, email, enabled) VALUES (1, 'user', '$2a$11$s7sLFvf1ofOS9leI9RVV0O0dnThh4Ml2M8DJeyvvrwgsipmHdb9O.', 'user@e.com', true);
+INSERT INTO user (id, username, password, email, enabled) VALUES (2, 'adm', '$2a$11$s7sLFvf1ofOS9leI9RVV0O0dnThh4Ml2M8DJeyvvrwgsipmHdb9O.', 'admin@e.com', true);
+
+INSERT INTO role (id, name) VALUES (1, 'ROLE_USER');
+INSERT INTO role (id, name) VALUES (2, 'ROLE_ADMIN');
+
+INSERT INTO user_role (user_id, role_id) VALUES (1, 1);
+INSERT INTO user_role (user_id, role_id) VALUES (2, 2);
